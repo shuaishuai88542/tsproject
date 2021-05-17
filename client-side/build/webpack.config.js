@@ -1,3 +1,5 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 module.exports = {
 	//编译入口文件
 	entry: "./src/index.ts",
@@ -21,5 +23,20 @@ module.exports = {
 		}]
 	},
 	//判断本地开发还是上线打包
-	devtool:process.env.NODE_ENV === 'production' ? false : 'inline-source-map'
+	devtool:process.env.NODE_ENV === 'production' ? false : 'inline-source-map',
+	devServer:{
+		contentBase:"./dist",
+		status:'error-only',
+		compress:false,
+		host:'localhost',
+		port:8080
+	},
+	plugins:[
+		new CleanWebpackPlugin({
+			cleanOnceBeforeBuildPatterns:['./dist']
+		})
+		new HtmlWebpackPlugin({
+			template:'./src/template/index.html'
+		})
+	]
 }

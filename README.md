@@ -1,1 +1,1 @@
-bilibili typescript
+bilibili typesc
