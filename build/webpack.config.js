@@ -26,15 +26,15 @@ module.exports = {
 	devtool:process.env.NODE_ENV === 'production' ? false : 'inline-source-map',
 	devServer:{
 		contentBase:"./dist",
-		status:'error-only',
+		stats:'errors-only',
 		compress:false,
 		host:'localhost',
-		port:8080
+		port:8089
 	},
 	plugins:[
 		new CleanWebpackPlugin({
 			cleanOnceBeforeBuildPatterns:['./dist']
-		})
+		}),
 		new HtmlWebpackPlugin({
 			template:'./src/template/index.html'
 		})
